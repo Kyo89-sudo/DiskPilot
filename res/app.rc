@@ -1,0 +1,117 @@
+// DiskPilot - risorse
+#pragma code_page(65001)
+#include <windows.h>
+#include <commctrl.h>
+#include "resource.h"
+
+IDI_APP ICON "app.ico"
+1 24 "app.manifest"
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 0,1,0,0
+ PRODUCTVERSION 0,1,0,0
+ FILEOS 0x40004
+ FILETYPE 0x1
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "041004b0"
+        BEGIN
+            VALUE "CompanyName", "Kyo89"
+            VALUE "FileDescription", "DiskPilot - gestione partizioni"
+            VALUE "FileVersion", "0.1.0"
+            VALUE "InternalName", "DiskPilot"
+            VALUE "OriginalFilename", "DiskPilot.exe"
+            VALUE "ProductName", "DiskPilot"
+            VALUE "ProductVersion", "0.1.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x0410, 1200
+    END
+END
+
+IDD_CREATE DIALOGEX 0, 0, 284, 214
+STYLE DS_SHELLFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Crea partizione"
+FONT 9, "MS Shell Dlg 2", 400, 0, 1
+BEGIN
+    LTEXT           "", IDC_INFO, 10, 8, 264, 18
+    LTEXT           "Dimensione (MB):", -1, 10, 33, 82, 8
+    EDITTEXT        IDC_SIZEMB, 96, 31, 86, 13, ES_NUMBER | ES_AUTOHSCROLL
+    CONTROL         "", IDC_SIZE_SPIN, "msctls_updown32", UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | UDS_NOTHOUSANDS, 182, 31, 10, 13
+    LTEXT           "", IDC_SIZE_RANGE, 194, 33, 82, 8
+    CONTROL         "", IDC_SIZE_TRACK, "msctls_trackbar32", TBS_NOTICKS | TBS_BOTH | WS_TABSTOP, 90, 49, 188, 16
+    LTEXT           "Posizione:", -1, 10, 73, 82, 8
+    CONTROL         "All'inizio dello spazio libero", IDC_POS_START, "Button", BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP, 96, 72, 176, 10
+    CONTROL         "Alla fine dello spazio libero", IDC_POS_END, "Button", BS_AUTORADIOBUTTON, 96, 85, 176, 10
+    LTEXT           "File system:", -1, 10, 105, 82, 8
+    COMBOBOX        IDC_FS, 96, 103, 110, 120, CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP | WS_GROUP
+    LTEXT           "Dimensione cluster:", -1, 10, 123, 82, 8
+    COMBOBOX        IDC_CLUSTER, 96, 121, 110, 160, CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Etichetta:", -1, 10, 141, 82, 8
+    EDITTEXT        IDC_LABEL, 96, 139, 140, 13, ES_AUTOHSCROLL
+    LTEXT           "Lettera unità:", -1, 10, 159, 82, 8
+    COMBOBOX        IDC_LETTER, 96, 157, 70, 200, CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "Aggiungi alla coda", IDOK, 138, 190, 82, 16
+    PUSHBUTTON      "Annulla", IDCANCEL, 224, 190, 52, 16
+END
+
+IDD_FORMAT DIALOGEX 0, 0, 264, 156
+STYLE DS_SHELLFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Formatta partizione"
+FONT 9, "MS Shell Dlg 2", 400, 0, 1
+BEGIN
+    LTEXT           "", IDC_INFO, 10, 8, 244, 18
+    LTEXT           "Etichetta:", -1, 10, 33, 80, 8
+    EDITTEXT        IDC_LABEL, 94, 31, 150, 13, ES_AUTOHSCROLL
+    LTEXT           "File system:", -1, 10, 51, 80, 8
+    COMBOBOX        IDC_FS, 94, 49, 110, 120, CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Dimensione cluster:", -1, 10, 69, 80, 8
+    COMBOBOX        IDC_CLUSTER, 94, 67, 110, 160, CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    AUTOCHECKBOX    "Formattazione rapida", IDC_QUICK, 94, 86, 150, 10
+    LTEXT           "Tutti i dati della partizione andranno persi quando premi Applica.", IDC_WARN, 10, 106, 244, 18
+    DEFPUSHBUTTON   "Aggiungi alla coda", IDOK, 118, 132, 82, 16
+    PUSHBUTTON      "Annulla", IDCANCEL, 204, 132, 52, 16
+END
+
+IDD_RESIZE DIALOGEX 0, 0, 284, 136
+STYLE DS_SHELLFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Ridimensiona partizione"
+FONT 9, "MS Shell Dlg 2", 400, 0, 1
+BEGIN
+    LTEXT           "", IDC_INFO, 10, 8, 264, 18
+    LTEXT           "Nuova dimensione (MB):", -1, 10, 33, 90, 8
+    EDITTEXT        IDC_SIZEMB, 104, 31, 86, 13, ES_NUMBER | ES_AUTOHSCROLL
+    CONTROL         "", IDC_SIZE_SPIN, "msctls_updown32", UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | UDS_NOTHOUSANDS, 190, 31, 10, 13
+    CONTROL         "", IDC_SIZE_TRACK, "msctls_trackbar32", TBS_NOTICKS | TBS_BOTH | WS_TABSTOP, 98, 49, 180, 16
+    LTEXT           "", IDC_SIZE_RANGE, 10, 70, 264, 8
+    LTEXT           "", IDC_AFTER, 10, 84, 264, 8
+    DEFPUSHBUTTON   "Aggiungi alla coda", IDOK, 138, 112, 82, 16
+    PUSHBUTTON      "Annulla", IDCANCEL, 224, 112, 52, 16
+END
+
+IDD_LETTER DIALOGEX 0, 0, 220, 86
+STYLE DS_SHELLFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Cambia lettera unità"
+FONT 9, "MS Shell Dlg 2", 400, 0, 1
+BEGIN
+    LTEXT           "", IDC_INFO, 10, 8, 200, 18
+    LTEXT           "Nuova lettera:", -1, 10, 35, 60, 8
+    COMBOBOX        IDC_LETTER, 74, 33, 70, 200, CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "Aggiungi alla coda", IDOK, 74, 62, 82, 16
+    PUSHBUTTON      "Annulla", IDCANCEL, 160, 62, 52, 16
+END
+
+IDD_LABEL DIALOGEX 0, 0, 240, 86
+STYLE DS_SHELLFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Cambia etichetta"
+FONT 9, "MS Shell Dlg 2", 400, 0, 1
+BEGIN
+    LTEXT           "", IDC_INFO, 10, 8, 220, 18
+    LTEXT           "Etichetta:", -1, 10, 35, 50, 8
+    EDITTEXT        IDC_LABEL, 64, 33, 166, 13, ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "Aggiungi alla coda", IDOK, 94, 62, 82, 16
+    PUSHBUTTON      "Annulla", IDCANCEL, 180, 62, 52, 16
+END
